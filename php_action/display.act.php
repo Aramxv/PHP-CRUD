@@ -1,0 +1,46 @@
+<?php 
+    // Include database file 
+    require_once 'database/database.php';
+
+    // Attempt SELECT query execution
+    $sql = "SELECT * FROM CRUD";
+    if ($result = mysqli_query($connect, $sql)) {
+        if (mysqli_num_rows($result) > 0) {
+            echo "<table class='table table-bordered table-striped'>";
+                echo "<thead>";
+                    echo "<tr>";
+                    echo "<th>ID</th>";
+                    echo "<th>Name</th>";
+                    echo "<th>Address</th>";
+                    echo "<th>Age</th>";
+                    echo "<th>Actions</th>";
+                    echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                    while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                            echo "<td>" .$row['id']. "</td>";
+                            echo "<td>" .$row['name']. "</td>";
+                            echo "<td>" .$row['address']. "</td>";
+                            echo "<td>" .$row['age']. "</td>";
+                            echo "<td>";
+                                echo "<a href='update.php?id" .$row['id'] ."' title='Update Record' data-toggle='tooltip'><span><i class='fa fa-pencil border-right px-2' aria-hidden='true'></span></i></a>";
+                                echo "<a href='delete.php?id" .$row['id'] ."' title='Delete Record' data-toggle='tooltip'><span><i class='fa fa-minus-circle px-2' aria-hidden='true'></span></i></a>";
+                            echo "</td>";
+                        echo "</tr>";
+                    }
+                echo "</tbody>";
+            echo "</table>";
+            // Free the result set
+            mysqli_free_result($result);
+        } 
+        else {
+            echo "<p class='lead'><em>No Data is Available at the moment.</em></p>";
+        }
+    }
+    else {
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($connect);
+    }
+    // Close the Connection
+    mysqli_close($connect);
+?>
