@@ -1,5 +1,5 @@
 # PHP-CRUD
-A simple CRUD App using PHP.
+A simple CRUD App using PHP and Bootsrap Framework.
 
 ### This can...
 - Can Create a record. 
