@@ -6,9 +6,10 @@
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-5">
                     <div class="page-header">
-                        <h2>Update Record</h2>
+                        <h1>Update Record</h1>
+                        <hr>
                         <p>Please update the Record Details and submit to update the Record.</p>
                     </div>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])) ?>" method="post">
@@ -31,7 +32,7 @@
                         </div>
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="submit" class="btn btn-default" value="Submit">
+                        <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
 

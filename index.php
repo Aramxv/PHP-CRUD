@@ -3,10 +3,10 @@
 ?>
 
     <div class="wrapper">
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12 border-bottom mb-3">
-                    <h2 class="pull-left">Simple CRUD</h2>
+                <div class="col-md-12 border-bottom mb-3 mt-5">
+                    <h1 class="pull-left">Simple CRUD</h1>
                     <a href="add.php" class="btn btn-primary pull-right">Add New Record</a>
                 </div>
                 

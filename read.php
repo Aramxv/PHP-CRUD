@@ -2,13 +2,14 @@
     include 'php_action/read.act.php';
     include 'includes/header.php';
 ?>
-<div class="wrapper mt-5">
+<div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 mt-5">
                     <div class="page-header">
                         <h1>View Record</h1>
                         <hr>
+                        <p>Display the detailed information of the record.</p>
                     </div>
                     <div class="form-group">
                         <label><strong class="text-primary">Name</strong></label>
