@@ -5,11 +5,11 @@
     <div class="wrapper">
         <div class="container mt-5">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 border-bottom mb-3">
                     <h2 class="pull-left">Simple CRUD</h2>
-                    <a href="add.php" class="btn btn-primary pull-right">Add New</a>
+                    <a href="add.php" class="btn btn-primary pull-right">Add New Record</a>
                 </div>
-
+                
                 <?php 
                     include 'php_action/display.act.php';
                 ?>

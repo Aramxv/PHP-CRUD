@@ -1,11 +1,15 @@
 <?php 
-    // Include database file 
+    /*
+        Include database connection file
+    */
     require_once 'database/database.php';
 
-    // Attempt SELECT query execution
+    /*
+        Attempt SELECT query execution
+    */
     $sql = "SELECT * FROM CRUD";
-    if ($result = mysqli_query($connect, $sql)) {
-        if (mysqli_num_rows($result) > 0) {
+    if ($result = $connect->query($sql)) {
+        if ($result->num_rows > 0) {
             echo "<table class='table table-bordered table-striped'>";
                 echo "<thead>";
                     echo "<tr>";
@@ -17,30 +21,35 @@
                     echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
-                    while ($row = mysqli_fetch_array($result)) {
+                    while ($row = $result->fetch_array()) {
                         echo "<tr>";
                             echo "<td>" .$row['id']. "</td>";
                             echo "<td>" .$row['name']. "</td>";
                             echo "<td>" .$row['address']. "</td>";
                             echo "<td>" .$row['age']. "</td>";
                             echo "<td>";
-                                echo "<a href='update.php?id" .$row['id'] ."' title='Update Record' data-toggle='tooltip'><span><i class='fa fa-pencil border-right px-2' aria-hidden='true'></span></i></a>";
-                                echo "<a href='delete.php?id" .$row['id'] ."' title='Delete Record' data-toggle='tooltip'><span><i class='fa fa-minus-circle px-2' aria-hidden='true'></span></i></a>";
+                                echo "<a href='read.php?id=" .$row['id'] ."' title='View Record' data-toggle='tooltip'><span><i class='fa fa-address-card border-right px-2' aria-hidden='true'></span></i></a>";
+                                echo "<a href='update.php?id=" .$row['id'] ."' title='Update Record' data-toggle='tooltip'><span><i class='fa fa-pencil border-right px-2' aria-hidden='true'></span></i></a>";
+                                echo "<a href='delete.php?id=" .$row['id'] ."' title='Delete Record' data-toggle='tooltip'><span><i class='fa fa-minus-circle px-2' aria-hidden='true'></span></i></a>";
                             echo "</td>";
                         echo "</tr>";
                     }
                 echo "</tbody>";
             echo "</table>";
-            // Free the result set
-            mysqli_free_result($result);
+            /*
+                Free the result set
+            */
+            $result->free();
         } 
         else {
             echo "<p class='lead'><em>No Data is Available at the moment.</em></p>";
         }
     }
     else {
-        echo "ERROR: Could not able to execute $sql. " . mysqli_error($connect);
+        echo "ERROR: Could not able to execute $sql. " . $connect->error;
     }
-    // Close the Connection
-    mysqli_close($connect);
+    /*
+        Close the Connection
+    */
+    $connect->close();
 ?>

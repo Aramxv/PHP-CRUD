@@ -3,11 +3,12 @@
     include 'php_action/add.act.php';
 ?>
 
-    
+<div class="wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-md-8 col-md-4 mt-3">
+            <div class="col-md-12 mt-5">
                 <h2 class="text-left">Create New Record</h2>
+                <hr>
                 <p class="text-left">Please Fill this form and submit to add new Record.</p>
             </div>
             <div class="form m-3">
@@ -33,7 +34,7 @@
             </div>
         </div>
     </div>
-  
+</div>
 
 <?php
     include 'includes/scripts.php';

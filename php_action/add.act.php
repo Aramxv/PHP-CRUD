@@ -61,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare the insert statement
         $sql = "INSERT INTO CRUD (name, address, age) VALUES (?, ?, ?)";
 
-        if ($stmt = mysqli_prepare($connect, $sql)) {
+        if ($stmt = $connect->prepare($sql)) {
             // Bind variables to the prepared statements as parameters
-            mysqli_stmt_bind_param($stmt, "sss", $param_name, $param_address, $param_age);
+            $stmt->bind_param($stmt, "sss", $param_name, $param_address, $param_age);
 
             // Set Parameteres
             $param_name = $name;
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_age = $age;
 
             // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
+            if ($stmt->execute()) {
                 // Records created successfully. Redirect the user to landing page 
                 header("location: index.php");
                 exit(); 
@@ -83,12 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* 
             Close the Statement
         */
-        mysqli_stmt_close($stmt);
+        $stmt->close();
     }
     /* 
         Close the Connection
     */
-    mysqli_close($connect);
+    $connect->close();
 }
 
 
